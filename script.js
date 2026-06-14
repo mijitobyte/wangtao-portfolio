@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function openModal(modal) {
         if (modal) {
             modal.classList.remove('hidden');
+            modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
         }
     }
@@ -97,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
         if (modal) {
             modal.classList.add('hidden');
+            modal.classList.remove('flex');
             document.body.style.overflow = '';
         }
     }
