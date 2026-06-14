@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script>
         tailwind.config = {
             theme: {
@@ -15,80 +16,22 @@
                         primary: '#0F172A',
                         secondary: '#475569',
                         accent: '#3B82F6',
-                        accentLight: '#60A5FA',
                         surface: '#F8FAFC',
-                        glass: 'rgba(255, 255, 255, 0.8)',
                     },
                     fontFamily: {
                         heading: ['Space Grotesk', 'sans-serif'],
                         body: ['Archivo', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'fade-up': 'fadeUp 0.6s ease-out forwards',
-                        'fade-in': 'fadeIn 0.5s ease-out forwards',
-                        'slide-left': 'slideLeft 0.6s ease-out forwards',
-                        'slide-right': 'slideRight 0.6s ease-out forwards',
-                        'scale-in': 'scaleIn 0.5s ease-out forwards',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideLeft: {
-                            '0%': { opacity: '0', transform: 'translateX(50px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        slideRight: {
-                            '0%': { opacity: '0', transform: 'translateX(-50px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        scaleIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
-                            '100%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' },
-                        }
                     }
                 }
             }
         }
     </script>
     <style>
-        * {
-            font-family: 'Archivo', sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { font-family: 'Archivo', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #F1F5F9 100%); min-height: 100vh; }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #F1F5F9 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        /* 玻璃态效果*/
         .glass {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(16px);
@@ -96,95 +39,19 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        .glass-dark {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* 渐变背景装饰 */
-        .gradient-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
-            animation: rotateGradient 30s linear infinite;
-        }
-        
-        @keyframes rotateGradient {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* 椤圭洰卡片 */
         .project-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-            border-radius: inherit;
         }
         
         .project-card:hover {
             transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15),
-                        0 0 0 1px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
         
-        .project-card:hover::before {
-            opacity: 1;
-        }
+        .project-card:hover .overlay { opacity: 1; }
         
-        .project-card:hover .overlay {
-            opacity: 1;
-        }
+        .overlay { transition: all 0.4s ease; backdrop-filter: blur(8px); }
         
-        .project-card:hover .card-image {
-            transform: scale(1.08);
-        }
-        
-        .overlay {
-            transition: all 0.4s ease;
-            backdrop-filter: blur(8px);
-        }
-        
-        .card-image {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* 动画延迟 */
-        .animate-delay-100 { animation-delay: 0.1s; }
-        .animate-delay-200 { animation-delay: 0.2s; }
-        .animate-delay-300 { animation-delay: 0.3s; }
-        .animate-delay-400 { animation-delay: 0.4s; }
-        .animate-delay-500 { animation-delay: 0.5s; }
-        
-        /* 滚动触发鍔ㄧ敾 */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -196,207 +63,60 @@
             transform: translateY(0);
         }
         
-        /* 打字机效果*/
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid #3B82F6;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
+        .skill-tag { transition: all 0.3s ease; }
+        .skill-tag:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3); }
         
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        .image-grid img { transition: all 0.4s ease; border-radius: 12px; }
+        .image-grid img:hover { transform: scale(1.05); box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2); }
         
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #3B82F6; }
-        }
-        
-        /* 发光按钮 */
-        .glow-button {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .glow-button::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899, #3B82F6);
-            background-size: 300% 300%;
-            animation: gradientShift 4s ease infinite;
-            border-radius: inherit;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .glow-button:hover::before {
-            opacity: 1;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* 浮动元素 */
-        .floating-shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.5;
-            animation: floatShape 8s ease-in-out infinite;
-        }
-        
-        @keyframes floatShape {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-        
-        /* 鎶€鑳芥爣绛?*/
-        .skill-tag {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
-        }
-        
-        /* 模态案*/
-        .modal-backdrop {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        
-        .modal-content {
-            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        .modal-backdrop { backdrop-filter: blur(12px); }
+        .modal-content { animation: modalSlideIn 0.4s ease; }
         
         @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         
-        /* 图片缃戞牸 */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
         
-        .image-grid img {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 12px;
-        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
         
-        .image-grid img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* 婊氬姩鏉?*/
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #F1F5F9;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #3B82F6, #8B5CF6);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #2563EB, #7C3AED);
-        }
-        
-        /* 鍑忓皯鍔ㄧ敾 */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .gradient-bg::before {
-                animation: none;
-            }
+            .reveal { opacity: 1; transform: none; transition: none; }
+            .project-card:hover { transform: none; }
         }
         
-        /* 响应式*/
-        @media (max-width: 768px) {
-            .image-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width: 640px) {
+            .image-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body class="text-primary">
-    <!-- 背景装饰 -->
-    <div class="gradient-bg"></div>
-    
-    <!-- 浮动装饰元素 -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div class="floating-shape w-72 h-72 bg-blue-400/20 top-20 -left-20" style="animation-delay: 0s;"></div>
-        <div class="floating-shape w-96 h-96 bg-purple-400/15 top-1/2 -right-32" style="animation-delay: 2s;"></div>
-        <div class="floating-shape w-64 h-64 bg-pink-400/10 bottom-20 left-1/3" style="animation-delay: 4s;"></div>
-    </div>
-
-    <!-- 瀵艰埅鏍?-->
+    <!-- 导航栏 -->
     <nav class="fixed top-6 left-6 right-6 z-50">
-        <div class="max-w-7xl mx-auto px-8 py-5 glass rounded-2xl shadow-lg shadow-black/5">
+        <div class="max-w-7xl mx-auto px-8 py-5 glass rounded-2xl shadow-lg">
             <div class="flex justify-between items-center">
-                <a href="#" class="font-heading text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer hover:opacity-80 transition-opacity">
-                    汪涛
-                </a>
+                <a href="#" class="font-heading text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">汪涛</a>
                 <div class="hidden md:flex items-center space-x-10">
-                    <a href="#projects" class="text-secondary hover:text-accent transition-all duration-300 cursor-pointer font-medium relative group">
-                        作品
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#about" class="text-secondary hover:text-accent transition-all duration-300 cursor-pointer font-medium relative group">
-                        关于
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#contact" class="text-secondary hover:text-accent transition-all duration-300 cursor-pointer font-medium relative group">
-                        联系
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-                    </a>
+                    <a href="#projects" class="text-secondary hover:text-accent transition-colors cursor-pointer font-medium">作品</a>
+                    <a href="#about" class="text-secondary hover:text-accent transition-colors cursor-pointer font-medium">关于</a>
+                    <a href="#contact" class="text-secondary hover:text-accent transition-colors cursor-pointer font-medium">联系</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 hover:bg-gray-100 rounded-xl transition-colors" aria-label="打开菜单">
+                <button id="mobile-menu-btn" class="md:hidden cursor-pointer p-2 hover:bg-gray-100 rounded-xl" aria-label="打开菜单">
                     <i class="ri-menu-3-line text-2xl"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- 移动端菜单-->
-    <div id="mobile-menu" class="fixed inset-0 z-[60] glass-dark hidden">
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-gray-900/80 backdrop-blur-md hidden">
         <div class="flex flex-col items-center justify-center h-full space-y-10">
-            <button id="close-mobile-menu" class="absolute top-6 right-6 p-3 hover:bg-white/10 rounded-xl transition-colors cursor-pointer" aria-label="关闭菜单">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 p-3 hover:bg-white/10 rounded-xl cursor-pointer" aria-label="关闭菜单">
                 <i class="ri-close-line text-3xl text-white"></i>
             </button>
             <a href="#projects" class="text-3xl font-heading text-white cursor-pointer hover:text-accent transition-colors">作品</a>
@@ -406,42 +126,36 @@
     </div>
 
     <!-- Hero 部分 -->
-    <section class="min-h-screen flex items-center justify-center pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6 relative">
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <!-- 鏍囩 -->
-            <div class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass rounded-full mb-6 sm:mb-8 animate-fade-in">
+    <section class="min-h-screen flex items-center justify-center pt-20 sm:pt-24 pb-12 sm:pb-16 px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass rounded-full mb-6 sm:mb-8">
                 <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-xs sm:text-sm font-medium text-secondary">开鏀惧悎浣滄満浼?/span>
+                <span class="text-xs sm:text-sm font-medium text-secondary">开放合作机会</span>
             </div>
             
-            <!-- 涓绘爣题?-->
-            <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 animate-fade-up">
-                <span class="bg-gradient-to-r from-primary via-accent to-purple-600 bg-clip-text text-transparent">
-                    UI/UX
-                </span>
+            <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6">
+                <span class="bg-gradient-to-r from-primary via-accent to-purple-600 bg-clip-text text-transparent">UI/UX</span>
                 <br>
                 <span class="text-primary">设计师</span>
             </h1>
             
-            <!-- 副标题-->
-            <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-8 sm:mb-12 max-w-3xl mx-auto animate-fade-up animate-delay-200 leading-relaxed px-4">
+            <p class="text-lg sm:text-xl md:text-2xl text-secondary mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
                 创造有意义的用户体验，将复杂问题转化为
-                <span class="text-accent font-semibold">简洁优雅</span>的设计解决方案           </p>
+                <span class="text-accent font-semibold">简洁优雅</span>的设计解决方案
+            </p>
             
-            <!-- 按钮组-->
-            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 animate-fade-up animate-delay-300 px-4">
-                <a href="#projects" class="group px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-accent to-blue-700 text-white rounded-xl sm:rounded-2xl hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 cursor-pointer font-semibold flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base">
+            <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5 px-4">
+                <a href="#projects" class="group px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-accent to-blue-700 text-white rounded-xl sm:rounded-2xl hover:shadow-xl hover:shadow-blue-500/30 transition-all cursor-pointer font-semibold flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base">
                     <span>查看作品</span>
                     <i class="ri-arrow-down-line group-hover:translate-y-1 transition-transform"></i>
                 </a>
-                <a href="#contact" class="group px-6 sm:px-8 py-3.5 sm:py-4 glass text-primary rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-xl transition-all duration-300 cursor-pointer font-semibold border border-gray-200 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base">
+                <a href="#contact" class="group px-6 sm:px-8 py-3.5 sm:py-4 glass text-primary rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-xl transition-all cursor-pointer font-semibold border border-gray-200 flex items-center justify-center gap-2 sm:gap-3 text-sm sm:text-base">
                     <span>联系我</span>
                     <i class="ri-mail-line group-hover:scale-110 transition-transform"></i>
                 </a>
             </div>
             
-            <!-- 统计数据 -->
-            < <div class="flex justify-center gap-6 sm:gap-8 md:gap-12 mt-12 sm:mt-16 animate-fade-up animate-delay-400 px-4">
+            <div class="flex justify-center gap-6 sm:gap-8 md:gap-12 mt-12 sm:mt-16 px-4">
                 <div class="text-center">
                     <div class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-primary">2+</div>
                     <div class="text-xs sm:text-sm text-secondary mt-1">完整项目</div>
@@ -458,92 +172,79 @@
                 </div>
             </div>
         </div>
-        
-        <!-- 婊氬姩提示 -->
-        <div class="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <i class="ri-mouse-line text-xl sm:text-2xl text-secondary/50"></i>
-        </div>
     </section>
 
-    <!-- 椤圭洰部分 -->
-    <section id="projects" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+    <!-- 项目部分 -->
+    <section id="projects" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto">
-            <!-- 标题 -->
             <div class="text-center mb-10 sm:mb-12 md:mb-16 reveal">
-                <span class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/10 text-accent rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">绮鹃€変綔鍝?/span>
-                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-3 sm:mb-4">
-                    椤圭洰灞曠ず
-                </h2>
-                <p class="text-secondary max-w-2xl mx-auto text-base sm:text-lg px-4">
-                    每一个项目都倾注了对用户体验鐨勬繁搴︽思考和精心打磨
-                </p>
+                <span class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-accent/10 text-accent rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">精选作品</span>
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-3 sm:mb-4">项目展示</h2>
+                <p class="text-secondary max-w-2xl mx-auto text-base sm:text-lg px-4">每一个项目都倾注了对用户体验的深度思考和精心打磨</p>
             </div>
             
-            <!-- 椤圭洰缃戞牸 -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
-                <!-- 鏃呰椤圭洰 -->
-                <div class="project-card glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer reveal animate-delay-100">
+                <!-- 旅记项目 -->
+                <div class="project-card glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer reveal">
                     <div class="relative aspect-[16/10] bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center p-8">
                         <div class="text-center text-white">
-                            <div class="text-6xl sm:text-7xl md:text-8xl font-heading font-bold mb-4 opacity-90">鏃呰</div>
+                            <div class="text-6xl sm:text-7xl md:text-8xl font-heading font-bold mb-4 opacity-90">旅记</div>
                             <div class="text-lg sm:text-xl opacity-70">Travel Notes</div>
                             <div class="mt-6 flex items-center justify-center gap-2 text-sm opacity-60">
                                 <i class="ri-smartphone-line"></i>
-                                <span>绉诲姩绔?路 绀句氦搴旂敤</span>
+                                <span>移动端 · 社交应用</span>
                             </div>
                         </div>
                         <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end justify-center opacity-0 pb-6 sm:pb-10">
-                            <span class="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-primary rounded-xl sm:rounded-2xl font-semibold hover:bg-gray-100 transition-colors flex items-center gap-2 text-sm sm:text-base">
-                                <i class="ri-eye-line"></i>
-                                查看璇︽儏
+                            <span class="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-primary rounded-xl sm:rounded-2xl font-semibold flex items-center gap-2 text-sm sm:text-base">
+                                <i class="ri-eye-line"></i>查看详情
                             </span>
                         </div>
                     </div>
                     <div class="p-5 sm:p-6 md:p-8">
                         <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                            <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs sm:text-sm font-medium">绉诲姩绔疷I</span>
-                            <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm font-medium">绀句氦搴旂敤</span>
+                            <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-orange-100 text-orange-700 rounded-full text-xs sm:text-sm font-medium">移动端UI</span>
+                            <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm font-medium">社交应用</span>
                         </div>
-                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-primary mb-2 sm:mb-3">鏃呰</h3>
-                        <p class="text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">鏃呰鐢熸椿绀句氦鍒嗕韩骞冲彴锛屼笓娉ㄤ簬Z涓栦唬用户鐨勮交閲忓寲绀句氦体验锛屽寘鍚梾浼村尮閰嶃€佸唴瀹瑰垎浜€佷簰鍔ㄧぞ浜ょ瓑鏍稿績鍔熻兘。/p>
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-primary mb-2 sm:mb-3">旅记</h3>
+                        <p class="text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">旅行生活社交分享平台，专注于Z世代用户的轻量化社交体验，包含旅伴匹配、内容分享、互动社交等核心功能。</p>
                         <div class="flex flex-wrap gap-2 sm:gap-2.5">
                             <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">Figma</span>
-                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">用户码旂┒</span>
-                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">浜や簰设计</span>
-                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">瑙嗚瑙勮寖</span>
+                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">用户研究</span>
+                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">交互设计</span>
+                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">视觉规范</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 杩愭渤椤圭洰 -->
-                <div class="project-card glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer reveal animate-delay-200">
+                <!-- 运河项目 -->
+                <div class="project-card glass rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer reveal">
                     <div class="relative aspect-[16/10] bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center p-8">
                         <div class="text-center text-white">
-                            <div class="text-6xl sm:text-7xl md:text-8xl font-heading font-bold mb-4 opacity-90">杩愭渤</div>
+                            <div class="text-6xl sm:text-7xl md:text-8xl font-heading font-bold mb-4 opacity-90">运河</div>
                             <div class="text-lg sm:text-xl opacity-70">Grand Canal</div>
                             <div class="mt-6 flex items-center justify-center gap-2 text-sm opacity-60">
                                 <i class="ri-ancient-pavilion-line"></i>
-                                <span>绉诲姩绔?路 鏂囧寲搴旂敤</span>
+                                <span>移动端 · 文化应用</span>
                             </div>
                         </div>
                         <div class="overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end justify-center opacity-0 pb-6 sm:pb-10">
-                            <span class="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-primary rounded-xl sm:rounded-2xl font-semibold hover:bg-gray-100 transition-colors flex items-center gap-2 text-sm sm:text-base">
-                                <i class="ri-eye-line"></i>
-                                查看璇︽儏
+                            <span class="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-primary rounded-xl sm:rounded-2xl font-semibold flex items-center gap-2 text-sm sm:text-base">
+                                <i class="ri-eye-line"></i>查看详情
                             </span>
                         </div>
                     </div>
                     <div class="p-5 sm:p-6 md:p-8">
                         <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
                             <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm font-medium">UI设计</span>
-                            <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-medium">鏂囧寲搴旂敤</span>
+                            <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-medium">文化应用</span>
                         </div>
-                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-primary mb-2 sm:mb-3">杩愭渤</h3>
-                        <p class="text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">澶ц繍娌虫枃鍖栦富题樺簲鐢ㄨ璁★紝铻嶅悎浼犵粺鏂囧寲元素涓庣幇浠ｄ氦浜掍綋楠岋紝灞曠幇鍗冨勾杩愭渤鐨勬枃鍖栭瓍鍔涖€?/p>
+                        <h3 class="font-heading text-xl sm:text-2xl font-bold text-primary mb-2 sm:mb-3">运河</h3>
+                        <p class="text-secondary mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">大运河文化主题应用设计，融合传统文化元素与现代交互体验，展现千年运河的文化魅力。</p>
                         <div class="flex flex-wrap gap-2 sm:gap-2.5">
                             <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">UI设计</span>
-                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">鏂囧寲铻嶅悎</span>
-                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">瑙嗚设计</span>
+                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">文化融合</span>
+                            <span class="skill-tag px-3 sm:px-4 py-1.5 sm:py-2 bg-surface rounded-lg sm:rounded-xl text-xs sm:text-sm text-secondary border border-gray-100">视觉设计</span>
                         </div>
                     </div>
                 </div>
@@ -551,130 +252,125 @@
         </div>
     </section>
 
-    <!-- 鏃呰璇︽儏弹窗 -->
+    <!-- 旅记详情弹窗 -->
     <div id="travel-modal" class="fixed inset-0 z-[70] hidden">
         <div class="modal-backdrop absolute inset-0 bg-black/60"></div>
         <div class="relative max-w-5xl mx-auto my-4 sm:my-6 md:my-8 mx-2 sm:mx-4 bg-white rounded-2xl sm:rounded-3xl overflow-hidden max-h-[95vh] sm:max-h-[92vh] overflow-y-auto modal-content shadow-2xl">
             <div class="sticky top-0 glass z-10 px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 border-b border-gray-200/50 flex justify-between items-center">
-                <h3 class="font-heading text-lg sm:text-xl md:text-2xl font-bold text-primary">鏃呰 - 鏃呰绀句氦骞冲彴</h3>
+                <h3 class="font-heading text-lg sm:text-xl md:text-2xl font-bold text-primary">旅记 - 旅行社交平台</h3>
                 <button id="close-travel-modal" class="cursor-pointer p-2 sm:p-3 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-colors" aria-label="关闭">
                     <i class="ri-close-line text-lg sm:text-xl"></i>
                 </button>
             </div>
             <div class="p-4 sm:p-6 md:p-8">
-                <!-- 娴锋姤灞曠ず -->
+                <!-- 海报展示 -->
                 <div class="mb-6 sm:mb-8 md:mb-10">
                     <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-3 sm:mb-4 md:mb-5 flex items-center gap-2">
-                        <i class="ri-image-line text-accent"></i>
-                        椤圭洰娴锋姤
+                        <i class="ri-image-line text-accent"></i>项目海报
                     </h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                         <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="鏃呰/娴锋姤.png" alt="鏃呰娴锋姤1" loading="lazy" class="w-full">
+                            <img src="旅记/海报.png" alt="旅记海报1" class="w-full" loading="lazy">
                         </div>
                         <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                            <img src="鏃呰/娴锋姤 (2).png" alt="鏃呰娴锋姤2" loading="lazy" class="w-full">
+                            <img src="旅记/海报 (2).png" alt="旅记海报2" class="w-full" loading="lazy">
                         </div>
                     </div>
                 </div>
 
-                <!-- 鏍稿績页面 -->
+                <!-- 核心页面 -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8 md:mb-10">
                     <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                        <img src="鏃呰/2.jpg" alt="鏃呰涓婚〉" loading="lazy" class="w-full">
+                        <img src="旅记/2.jpg" alt="旅记主页" class="w-full" loading="lazy">
                     </div>
                     <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                        <img src="鏃呰/3.jpg" alt="鏃呰鍏ㄩ儴页面" loading="lazy" class="w-full">
+                        <img src="旅记/3.jpg" alt="旅记全部页面" class="w-full" loading="lazy">
                     </div>
                 </div>
                 
                 <div class="space-y-6 sm:space-y-8 md:space-y-10">
-                    <!-- 椤圭洰姒傝堪 -->
+                    <!-- 项目概述 -->
                     <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2">
-                            <i class="ri-file-text-line text-accent"></i>
-                            椤圭洰姒傝堪
+                            <i class="ri-file-text-line text-accent"></i>项目概述
                         </h4>
-                        <p class="text-secondary leading-relaxed text-sm sm:text-base">鏃呰鏄竴娆鹃面鍚慫涓栦唬用户鐨勬梾琛岀敓娲荤ぞ浜ゅ垎浜钩号帮紝鏃ㄥ湪鎵撻€犺交閲忓寲銆侀珮閫傞厤鎬х殑鏃呰绀句氦浜у搧锛屽皢绀句氦浜掑姩涓庢湇鍔¤瀺鍚堛€傞€氳繃问嵎璋冩煡鍜岀珵鍝佸垎鏋愶紝璇嗗埆鍏抽敭用户鐥涚偣锛屾槑纭骇鍝佸畾浣嶅拰宸紓鍖栨柟鍚戙€?/p>
+                        <p class="text-secondary leading-relaxed text-sm sm:text-base">旅记是一款面向Z世代用户的旅行生活社交分享平台，旨在打造轻量化、高适配性的旅行社交产品，将社交互动与服务融合。通过问卷调查和竞品分析，识别关键用户痛点，明确产品定位和差异化方向。</p>
                     </div>
                     
-                    <!-- 鏍稿績鍔熻兘 -->
+                    <!-- 核心功能 -->
                     <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2">
-                            <i class="ri-function-add-line text-accent"></i>
-                            鏍稿績鍔熻兘
+                            <i class="ri-function-add-line text-accent"></i>核心功能
                         </h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-orange-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-user-heart-line text-orange-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">鏃呬即鍖归厤</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">旅伴匹配</span>
                             </div>
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-share-line text-blue-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">内容鍒嗕韩</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">内容分享</span>
                             </div>
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-green-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-compass-3-line text-green-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">鎺㈢储号戠幇</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">探索发现</span>
                             </div>
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-purple-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-user-settings-line text-purple-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">涓汉涓績</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">个人中心</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- 设计浜偣 -->
+                    <!-- 设计亮点 -->
                     <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-4 sm:mb-5 flex items-center gap-2">
-                            <i class="ri-lightbulb-line text-accent"></i>
-                            设计浜偣
+                            <i class="ri-lightbulb-line text-accent"></i>设计亮点
                         </h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
                             <div class="p-4 sm:p-5 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg sm:rounded-xl border border-orange-200">
                                 <i class="ri-palette-line text-2xl sm:text-3xl text-orange-500 mb-2 sm:mb-3"></i>
-                                <h5 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">鏆栨鑹蹭綋绯?/h5>
-                                <p class="text-xs sm:text-sm text-secondary">寤虹珛浠ユ殩姗欒壊涓轰富鑹茬殑瑙嗚绯荤粺锛岃惀閫犳俯鏆栨不鎰堢殑绀句氦姘涘洿</p>
+                                <h5 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">暖橙色体系</h5>
+                                <p class="text-xs sm:text-sm text-secondary">建立以暖橙色为主色的视觉系统，营造温暖治愈的社交氛围</p>
                             </div>
                             <div class="p-4 sm:p-5 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg sm:rounded-xl border border-blue-200">
                                 <i class="ri-heart-3-line text-2xl sm:text-3xl text-blue-500 mb-2 sm:mb-3"></i>
-                                <h5 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">鎯呮劅鍖栬璁?/h5>
-                                <p class="text-xs sm:text-sm text-secondary">娉ㄩ噸鎯呮劅鍖栦氦浜掍綋楠岋紝鎻愬崌用户号備笌搴﹀拰绀句氦绮樻€?/p>
+                                <h5 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">情感化设计</h5>
+                                <p class="text-xs sm:text-sm text-secondary">注重情感化交互体验，提升用户参与度和社交粘性</p>
                             </div>
                             <div class="p-4 sm:p-5 bg-gradient-to-br from-green-50 to-green-100 rounded-lg sm:rounded-xl border border-green-200">
                                 <i class="ri-checkbox-circle-line text-2xl sm:text-3xl text-green-500 mb-2 sm:mb-3"></i>
-                                <h5 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">瀹屾暣瑙勮寖</h5>
-                                <p class="text-xs sm:text-sm text-secondary">杈撳嚭瀹屾暣鐨刄I设计瑙勮寖锛屽彲鐩存帴瀵规帴开号戝疄鐜?/p>
+                                <h5 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">完整规范</h5>
+                                <p class="text-xs sm:text-sm text-secondary">输出完整的UI设计规范，可直接对接开发实现</p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- 鐣岄面鎴浘 -->
+                    <!-- 界面截图 -->
                     <div>
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-4 sm:mb-5 flex items-center gap-2">
-                            <i class="ri-screenshot-line text-accent"></i>
-                            鐣岄面鎴浘
+                            <i class="ri-screenshot-line text-accent"></i>界面截图
                         </h4>
                         <div class="image-grid">
-                            <img src="鏃呰/1.jpg" alt="鐣岄面1" class="cursor-pointer" loading="lazy">
-                            <img src="鏃呰/2.jpg" alt="鐣岄面2" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/3.jpg" alt="鐣岄面3" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/4.jpg" alt="鐣岄面4" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/5.jpg" alt="鐣岄面5" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/6.jpg" alt="鐣岄面6" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/7.jpg" alt="鐣岄面7" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/8.jpg" alt="鐣岄面8" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/9.jpg" alt="鐣岄面9" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/10.jpg" alt="鐣岄面10" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/11.jpg" alt="鐣岄面11" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/12.jpg" alt="鐣岄面12" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/13.jpg" alt="鐣岄面13" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/14.jpg" alt="鐣岄面14" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/15.jpg" alt="鐣岄面15" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/16.jpg" alt="鐣岄面16" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/17.jpg" alt="鐣岄面17" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/18.jpg" alt="鐣岄面18" loading="lazy" class="cursor-pointer">
-                            <img src="鏃呰/19.jpg" alt="鐣岄面19" loading="lazy" class="cursor-pointer">
+                            <img src="旅记/1.jpg" alt="界面1" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/2.jpg" alt="界面2" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/3.jpg" alt="界面3" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/4.jpg" alt="界面4" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/5.jpg" alt="界面5" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/6.jpg" alt="界面6" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/7.jpg" alt="界面7" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/8.jpg" alt="界面8" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/9.jpg" alt="界面9" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/10.jpg" alt="界面10" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/11.jpg" alt="界面11" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/12.jpg" alt="界面12" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/13.jpg" alt="界面13" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/14.jpg" alt="界面14" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/15.jpg" alt="界面15" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/16.jpg" alt="界面16" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/17.jpg" alt="界面17" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/18.jpg" alt="界面18" class="cursor-pointer" loading="lazy">
+                            <img src="旅记/19.jpg" alt="界面19" class="cursor-pointer" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -682,12 +378,12 @@
         </div>
     </div>
 
-    <!-- 杩愭渤璇︽儏弹窗 -->
+    <!-- 运河详情弹窗 -->
     <div id="canal-modal" class="fixed inset-0 z-[70] hidden">
         <div class="modal-backdrop absolute inset-0 bg-black/60"></div>
         <div class="relative max-w-5xl mx-auto my-4 sm:my-6 md:my-8 mx-2 sm:mx-4 bg-white rounded-2xl sm:rounded-3xl overflow-hidden max-h-[95vh] sm:max-h-[92vh] overflow-y-auto modal-content shadow-2xl">
             <div class="sticky top-0 glass z-10 px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 border-b border-gray-200/50 flex justify-between items-center">
-                <h3 class="font-heading text-lg sm:text-xl md:text-2xl font-bold text-primary">杩愭渤 - 澶ц繍娌虫枃鍖栧簲鐢?/h3>
+                <h3 class="font-heading text-lg sm:text-xl md:text-2xl font-bold text-primary">运河 - 大运河文化应用</h3>
                 <button id="close-canal-modal" class="cursor-pointer p-2 sm:p-3 hover:bg-gray-100 rounded-lg sm:rounded-xl transition-colors" aria-label="关闭">
                     <i class="ri-close-line text-lg sm:text-xl"></i>
                 </button>
@@ -695,51 +391,48 @@
             <div class="p-4 sm:p-6 md:p-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8 md:mb-10">
                     <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                        <img src="杩愭渤/2.png" alt="杩愭渤椤圭洰设计1" loading="lazy" class="w-full">
+                        <img src="运河/2.png" alt="运河项目设计1" class="w-full" loading="lazy">
                     </div>
                     <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                        <img src="杩愭渤/3.png" alt="杩愭渤椤圭洰设计2" loading="lazy" class="w-full">
+                        <img src="运河/3.png" alt="运河项目设计2" class="w-full" loading="lazy">
                     </div>
                 </div>
                 
                 <div class="space-y-6 sm:space-y-8 md:space-y-10">
                     <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2">
-                            <i class="ri-file-text-line text-accent"></i>
-                            椤圭洰姒傝堪
+                            <i class="ri-file-text-line text-accent"></i>项目概述
                         </h4>
-                        <p class="text-secondary leading-relaxed text-sm sm:text-base">杩愭渤椤圭洰鏄竴娆惧ぇ杩愭渤鏂囧寲涓婚搴旂敤设计锛屾棬鍦ㄩ€氳繃鐜颁唬鏁板瓧濯掍綋鎶€鏈睍鐜板崈骞磋繍娌崇殑鏂囧寲榄呭姏銆傝璁¤瀺鍚堜簡浼犵粺鏂囧寲元素涓庣幇浠ｄ氦浜掍綋楠岋紝涓虹敤鎴锋彁渚涙矇娴稿紡鐨勬枃鍖栨帰绱箣鏃呫€?/p>
+                        <p class="text-secondary leading-relaxed text-sm sm:text-base">运河项目是一款大运河文化主题应用设计，旨在通过现代数字媒体技术展现千年运河的文化魅力。设计融合了传统文化元素与现代交互体验，为用户提供沉浸式的文化探索之旅。</p>
                     </div>
                     
                     <div class="glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6">
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2">
-                            <i class="ri-star-line text-accent"></i>
-                            设计鐗硅壊
+                            <i class="ri-star-line text-accent"></i>设计特色
                         </h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-blue-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-ancient-pavilion-line text-blue-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">鏂囧寲元素铻嶅悎</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">文化元素融合</span>
                             </div>
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-purple-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-touch-app-line text-purple-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">鐜颁唬浜や簰体验</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">现代交互体验</span>
                             </div>
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-green-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-landscape-line text-green-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">娌夋蹈寮忔帰绱?/span>
+                                <span class="text-primary font-medium text-sm sm:text-base">沉浸式探索</span>
                             </div>
                             <div class="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-orange-50 rounded-lg sm:rounded-xl">
                                 <i class="ri-brush-line text-orange-500 text-lg sm:text-xl"></i>
-                                <span class="text-primary font-medium text-sm sm:text-base">瑙嗚号欎簨</span>
+                                <span class="text-primary font-medium text-sm sm:text-base">视觉叙事</span>
                             </div>
                         </div>
                     </div>
                     
                     <div>
                         <h4 class="font-heading text-base sm:text-lg font-bold text-primary mb-4 sm:mb-5 flex items-center gap-2">
-                            <i class="ri-image-line text-accent"></i>
-                            设计灞曠ず
+                            <i class="ri-image-line text-accent"></i>设计展示
                         </h4>
                         <div class="image-grid">
                             <img src="运河/1.png" alt="运河设计1" class="cursor-pointer" loading="lazy">
@@ -758,62 +451,58 @@
     </div>
 
     <!-- 关于部分 -->
-    <section id="about" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+    <section id="about" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-10 sm:mb-12 md:mb-16 reveal">
-                <span class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-purple-500/10 text-purple-600 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">关于我/span>
-                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary">
-                    设计鐞嗗康
-                </h2>
+                <span class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-purple-500/10 text-purple-600 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">关于我</span>
+                <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary">设计理念</h2>
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16 items-center">
-                <!-- 澶村儚区域 -->
-                <div class="reveal animate-delay-100 order-1 lg:order-none">
+                <div class="reveal order-1 lg:order-none">
                     <div class="relative">
                         <div class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 mx-auto relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-accent to-purple-600 rounded-2xl sm:rounded-3xl rotate-6 animate-glow"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent to-purple-600 rounded-2xl sm:rounded-3xl rotate-6"></div>
                             <div class="relative w-full h-full bg-gradient-to-br from-accent to-purple-600 rounded-2xl sm:rounded-3xl flex items-center justify-center overflow-hidden">
-                                <span class="text-white text-6xl sm:text-7xl md:text-8xl font-heading font-bold">姹?/span>
+                                <span class="text-white text-6xl sm:text-7xl md:text-8xl font-heading font-bold">汪</span>
                             </div>
                         </div>
-                        <!-- 装饰元素 -->
                         <div class="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-blue-500/20 rounded-xl sm:rounded-2xl rotate-12 animate-float"></div>
                         <div class="absolute -bottom-3 sm:-bottom-4 -left-3 sm:-left-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-purple-500/20 rounded-full animate-float" style="animation-delay: 2s;"></div>
                     </div>
                 </div>
                 
-                <!-- 内容区域 -->
-                <div class="reveal animate-delay-200 order-2 lg:order-none">
+                <div class="reveal order-2 lg:order-none">
                     <h3 class="font-heading text-2xl sm:text-3xl font-bold text-primary mb-4 sm:mb-6">
-                        鐑埍鍒涢€犳湁鎰忎箟鐨?                        <span class="bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent">用户体验</span>
+                        热爱创造有意义的
+                        <span class="bg-gradient-to-r from-accent to-purple-600 bg-clip-text text-transparent">用户体验</span>
                     </h3>
                     <p class="text-secondary mb-6 sm:mb-8 leading-relaxed text-base sm:text-lg">
-                        涓撴敞浜庣Щ鍔ㄧUI设计锛屾敞閲嶇敤鎴风爺绌跺拰鎯呮劅鍖栬璁°€傜浉淇″ソ鐨勮璁′笉浠呮槸瑙嗚涓婄殑缇庢劅锛屾洿鏄用户闇€姹傜殑娣卞害鐞嗚В鍜屽畬缇庡洖搴斻€?                    </p>
+                        专注于移动端UI设计，注重用户研究和情感化设计。相信好的设计不仅是视觉上的美感，更是对用户需求的深度理解和完美回应。
+                    </p>
                     
                     <div class="space-y-5 sm:space-y-6">
                         <div>
                             <h4 class="font-heading font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2 text-sm sm:text-base">
-                                <i class="ri-tools-line text-accent"></i>
-                                涓撲笟鎶€鑳?                            </h4>
+                                <i class="ri-tools-line text-accent"></i>专业技能
+                            </h4>
                             <div class="flex flex-wrap gap-2 sm:gap-3">
                                 <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">Figma</span>
-                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">用户码旂┒</span>
-                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">浜や簰设计</span>
-                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">瑙嗚设计</span>
-                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">鍘熷瀷设计</span>
-                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">设计瑙勮寖</span>
+                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">用户研究</span>
+                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">交互设计</span>
+                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">视觉设计</span>
+                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">原型设计</span>
+                                <span class="skill-tag px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 glass rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-primary border border-gray-200 cursor-pointer">设计规范</span>
                             </div>
                         </div>
                         
                         <div>
                             <h4 class="font-heading font-bold text-primary mb-2 sm:mb-3 flex items-center gap-2 text-sm sm:text-base">
-                                <i class="ri-graduation-cap-line text-accent"></i>
-                                鏁欒偛背景
+                                <i class="ri-graduation-cap-line text-accent"></i>教育背景
                             </h4>
                             <div class="glass rounded-lg sm:rounded-xl p-3 sm:p-4 border border-gray-200">
-                                <p class="text-primary font-medium text-sm sm:text-base">娌冲寳姘村埄鐢靛姏瀛﹂櫌</p>
-                                <p class="text-secondary text-xs sm:text-sm">鏁板瓧濯掍綋鎶€鏈笓涓?路 2022绾?/p>
+                                <p class="text-primary font-medium text-sm sm:text-base">河北水利电力学院</p>
+                                <p class="text-secondary text-xs sm:text-sm">数字媒体技术专业 · 2022级</p>
                             </div>
                         </div>
                     </div>
@@ -823,21 +512,15 @@
     </section>
 
     <!-- 联系部分 -->
-    <section id="contact" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
+    <section id="contact" class="py-16 sm:py-20 md:py-24 px-4 sm:px-6">
         <div class="max-w-4xl mx-auto text-center reveal">
             <span class="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-green-500/10 text-green-600 rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4">联系我</span>
-            <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">
-                期待与您交流
-            </h2>
-            <p class="text-secondary mb-8 sm:mb-10 md:mb-12 text-base sm:text-lg max-w-2xl mx-auto px-4">
-                如果您对我的作品感兴趣，或者有合作机会，欢迎随时联系我
-            </p>
+            <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 sm:mb-6">期待与您交流</h2>
+            <p class="text-secondary mb-8 sm:mb-10 md:mb-12 text-base sm:text-lg max-w-2xl mx-auto px-4">如果您对我的作品感兴趣，或者有合作机会，欢迎随时联系我</p>
             
-            <!-- 联系方式卡片 -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10 md:mb-12">
-                <!-- 邮箱 -->
-                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-accent/50 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="copyContact('18631433349@163.com', '邮箱')">
-                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-accent/50 hover:shadow-xl transition-all cursor-pointer" onclick="copyContact('18631433349@163.com', '邮箱')">
+                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
                         <i class="ri-mail-line text-xl sm:text-2xl text-accent group-hover:text-white"></i>
                     </div>
                     <h4 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">电子邮箱</h4>
@@ -845,9 +528,8 @@
                     <p class="text-xs text-secondary/50 mt-1">点击复制</p>
                 </div>
                 
-                <!-- 微信 -->
-                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-green-500/50 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="copyContact('Wtt-to', '微信号')">
-                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-green-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-green-500/50 hover:shadow-xl transition-all cursor-pointer" onclick="copyContact('Wtt-to', '微信号')">
+                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-green-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
                         <i class="ri-wechat-line text-xl sm:text-2xl text-green-500 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">微信</h4>
@@ -855,9 +537,8 @@
                     <p class="text-xs text-secondary/50 mt-1">点击复制</p>
                 </div>
                 
-                <!-- 手机 -->
-                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-purple-500/50 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="copyContact('18631433349', '手机号')">
-                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-purple-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-purple-500/50 hover:shadow-xl transition-all cursor-pointer" onclick="copyContact('18631433349', '手机号')">
+                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-purple-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all">
                         <i class="ri-phone-line text-xl sm:text-2xl text-purple-500 group-hover:text-white"></i>
                     </div>
                     <h4 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">手机号码</h4>
@@ -869,49 +550,16 @@
     </section>
 
     <!-- 复制成功提示 -->
-    <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-[80] flex items-center gap-2">
+    <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all z-[80] flex items-center gap-2">
         <i class="ri-checkbox-circle-line"></i>
         <span>已复制到剪贴板</span>
     </div>
-                    <h4 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">鐢靛瓙閭</h4>
-                    <p class="text-secondary text-xs sm:text-sm break-all">18631433349@163.com</p>
-                    <p class="text-xs text-secondary/50 mt-1">点击复制</p>
-                </div>
-                
-                <!-- 寰俊 -->
-                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-green-500/50 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="copyContact('Wtt-to', '寰俊号?)">
-                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-green-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-                        <i class="ri-wechat-line text-xl sm:text-2xl text-green-500 group-hover:text-white"></i>
-                    </div>
-                    <h4 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">寰俊</h4>
-                    <p class="text-secondary text-xs sm:text-sm">Wtt-to</p>
-                    <p class="text-xs text-secondary/50 mt-1">点击复制</p>
-                </div>
-                
-                <!-- 手机 -->
-                <div class="group glass rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border border-gray-200 hover:border-purple-500/50 hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="copyContact('18631433349', '手机号)">
-                    <div class="w-12 h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 mx-auto mb-3 sm:mb-4 bg-purple-100 rounded-lg sm:rounded-xl flex items-center justify-center group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
-                        <i class="ri-phone-line text-xl sm:text-2xl text-purple-500 group-hover:text-white"></i>
-                    </div>
-                    <h4 class="font-heading font-bold text-primary mb-1 sm:mb-2 text-sm sm:text-base">手机号码</h4>
-                    <p class="text-secondary text-xs sm:text-sm">18631433349</p>
-                    <p class="text-xs text-secondary/50 mt-1">点击复制</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 复制成功提示 -->
-    <div id="copy-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-3 bg-green-500 text-white rounded-xl shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-[80] flex items-center gap-2">
-        <i class="ri-checkbox-circle-line"></i>
-        <span>宸插鍒跺埌鍓创鏉?/span>
-    </div>
-
-    <!-- 椤佃剼 -->
+    <!-- 页脚 -->
     <footer class="py-10 px-6 border-t border-gray-200/50">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-secondary text-sm">&copy; 2026 汪涛. All rights reserved.</p>
-            <p class="text-secondary text-sm">鐢ㄥ績设计锛屽垱閫犵編濂戒綋楠?/p>
+            <p class="text-secondary text-sm">&copy; 2024 汪涛. All rights reserved.</p>
+            <p class="text-secondary text-sm">用心设计，创造美好体验</p>
         </div>
     </footer>
 
