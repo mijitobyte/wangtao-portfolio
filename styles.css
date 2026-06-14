@@ -52,6 +52,35 @@ img {
     background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
 }
 
+/* 图片加载动画 */
+.image-grid img {
+    background: linear-gradient(135deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.image-grid img.loaded {
+    animation: none;
+    background: transparent;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* 首屏海报优化 */
+.modal-content img[fetchpriority="high"] {
+    background: linear-gradient(135deg, #f8f8f8 25%, #e8e8e8 50%, #f8f8f8 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+}
+
+.modal-content img.loaded {
+    animation: none;
+    background: transparent;
+}
+
 /* 打印样式 */
 @media print {
     nav, footer, .floating-shape, .gradient-bg {

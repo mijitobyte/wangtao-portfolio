@@ -1,0 +1,41 @@
+# 图片长期缓存（1年）
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS/JS 缓存1天（带版本号可长期缓存）
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400
+
+# HTML 不缓存（每次获取最新）
+/*.html
+  Cache-Control: no-cache
+
+# 字体缓存1年
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# 启用 Brotli 压缩
+/*
+  Content-Encoding: br
+  Vary: Accept-Encoding
+
+# 安全头
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin

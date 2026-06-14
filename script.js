@@ -238,6 +238,25 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', () => {
         document.body.classList.add('loaded');
     });
+
+    // ============ 图片加载优化 ============
+    // 监听所有图片加载完成，移除骨架屏动画
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach(img => {
+        if (img.complete) {
+            // 图片已缓存或加载完成
+            img.classList.add('loaded');
+        } else {
+            // 图片还在加载中
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+            img.addEventListener('error', () => {
+                // 加载失败时也移除动画
+                img.classList.add('loaded');
+            });
+        }
+    });
     
     // ============ 滚动进度指示器 ============
     const progressBar = document.createElement('div');
