@@ -1,0 +1,230 @@
+/* 自定义样式 - UI/UX作品集 */
+
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3B82F6, #8B5CF6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563EB, #7C3AED);
+}
+
+/* 选中文本样式 */
+::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: #0F172A;
+}
+
+/* 焦点状态 */
+:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+/* 图片加载占位 */
+img {
+    background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+}
+
+/* 打印样式 */
+@media print {
+    nav, footer, .floating-shape, .gradient-bg {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+    }
+    
+    .glass {
+        background: white !important;
+        backdrop-filter: none !important;
+    }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) {
+    .project-card:hover {
+        transform: none;
+    }
+    
+    .project-card:active {
+        transform: scale(0.98);
+    }
+}
+
+/* 高对比度模式 */
+@media (forced-colors: active) {
+    .glass {
+        border: 1px solid ButtonText;
+    }
+    
+    .skill-tag {
+        border: 1px solid ButtonText;
+    }
+}
+
+/* 暗色模式预留 */
+@media (prefers-color-scheme: dark) {
+    /* 可在此添加暗色模式样式 */
+}
+
+/* 性能优化 */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* 文本截断 */
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 动画辅助类 */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.transition-transform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* 背景模糊兼容 */
+@supports not (backdrop-filter: blur(16px)) {
+    .glass {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .glass-dark {
+        background: rgba(15, 23, 42, 0.95);
+    }
+}
+
+/* 网格对齐辅助 */
+.grid-align-center {
+    display: grid;
+    place-items: center;
+}
+
+/* 容器查询（现代浏览器） */
+@container (max-width: 640px) {
+    .responsive-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 图片网格响应式 */
+@media (max-width: 480px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .image-grid img {
+        border-radius: 0.5rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 移动端优化 */
+@media (max-width: 640px) {
+    /* 减少装饰元素 */
+    .floating-shape {
+        display: none;
+    }
+    
+    .gradient-bg::before {
+        animation-duration: 60s;
+    }
+    
+    /* 优化触摸目标 */
+    a, button, .project-card, .skill-tag {
+        min-height: 44px;
+    }
+    
+    /* 优化模态框 */
+    .modal-content {
+        margin: 0.5rem;
+        max-height: 95vh;
+    }
+    
+    /* 简化动画 */
+    .animate-float {
+        animation: none;
+    }
+    
+    .animate-glow {
+        animation: none;
+    }
+}
+
+/* 平板端优化 */
+@media (min-width: 641px) and (max-width: 1024px) {
+    /* 保持两列布局 */
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
